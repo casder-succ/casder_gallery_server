@@ -26,8 +26,9 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const splitFile = async (name: string, fileBuffer: Buffer) => {
   const fileName = name
-    .replace(/\s+/g, '_')
-    .replace(/\\+/g, '_');
+    .replace(/\s+/g, '')
+    .replace(/\\+/g, '')
+    .replace(/[.,]+/g, '');
 
   await fs.writeFile(`./src/assets/images/${fileName}`, fileBuffer);
 
